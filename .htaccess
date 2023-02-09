@@ -1,0 +1,58 @@
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+#rutas para login
+RewriteRule ^login$ index.php
+RewriteRule ^login/session$ modules/modulo-session.php
+RewriteRule ^login/(.*)$ modules/modulo-session.php?logout=$1
+
+#ruta index admin
+RewriteRule ^home$ views/admin/index.php
+
+#rutas para las vistas modulo de mascotas
+RewriteRule ^mascotas$ views/admin/mascotas/index.mascotas.php
+RewriteRule ^mascotas/create$ views/admin/mascotas/create.mascotas.php
+RewriteRule ^mascotas/([0-9]+)/edit$ views/admin/mascotas/edit.mascotas.php?id=$1
+
+#rutas para el manteniento de la tabla mascotas
+RewriteRule ^mascotas/save$ modules/modulo-mascotas.php
+RewriteRule ^mascotas/([0-9]+)/update$ modules/modulo-mascotas.php?id=$1
+RewriteRule ^mascotas/([0-9]+)/delete$ modules/modulo-mascotas.php?id=$1&action=delete
+
+#rutas para las vistas modulo de clientes
+RewriteRule ^clientes$ views/admin/clientes/index.clientes.php
+RewriteRule ^clientes/create$ views/admin/clientes/create.clientes.php
+RewriteRule ^clientes/([0-9]+)/edit$ views/admin/clientes/edit.clientes.php?id=$1
+
+#rutas para el manteniento de la tabla clientes
+RewriteRule ^clientes/save$ modules/modulo-clientes.php
+RewriteRule ^clientes/([0-9]+)/update$ modules/modulo-clientes.php?id=$1
+RewriteRule ^clientes/([0-9]+)/delete$ modules/modulo-clientes.php?id=$1&action=delete
+
+
+#rutas para las vistas modulo de medicamentos
+RewriteRule ^medicamentos$ views/admin/medicamentos/index.medicamentos.php
+RewriteRule ^medicamentos/create$ views/admin/medicamentos/create.medicamentos.php
+RewriteRule ^medicamentos/([0-9]+)/edit$ views/admin/medicamentos/edit.medicamentos.php?id=$1
+
+#rutas para el manteniento de la tabla medicamentos
+RewriteRule ^medicamentos/save$ modules/modulo-medicamentos.php
+RewriteRule ^medicamentos/([0-9]+)/update$ modules/modulo-medicamentos.php?id=$1
+RewriteRule ^medicamentos/([0-9]+)/delete$ modules/modulo-medicamentos.php?id=$1&action=delete
+
+
+#rutas para las vistas modulo de usuarios
+RewriteRule ^usuarios$ views/admin/usuarios/index.usuarios.php
+RewriteRule ^usuarios/create$ views/admin/usuarios/create.usuarios.php
+RewriteRule ^usuarios/([0-9]+)/edit$ views/admin/usuarios/edit.usuarios.php?id=$1
+
+#rutas para el manteniento de la tabla usuarios
+RewriteRule ^usuarios/save$ modules/modulo-usuarios.php
+RewriteRule ^usuarios/([0-9]+)/update$ modules/modulo-usuarios.php?id=$1
+RewriteRule ^usuarios/([0-9]+)/delete$ modules/modulo-usuarios.php?id=$1&action=delete
+
+
+#rutas para home perfil
+RewriteRule ^perfil$ views/perfil/users.profile.php
+RewriteRule ^perfil/([0-9]+)/update$ modules/modulo-profile-user.php?id=$1
